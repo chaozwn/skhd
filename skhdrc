@@ -1,5 +1,6 @@
 # opens iTerm2
 cmd - return : bash ~/.config/skhd/scripts/open_wezterm.sh
+cmd - 0 : bash ~/.config/skhd/scripts/open_google.sh
 
 # Navigation
 cmd - h : yabai -m window --focus west
