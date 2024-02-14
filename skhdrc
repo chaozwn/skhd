@@ -1,5 +1,5 @@
 # opens iTerm2
-cmd - return : bash ~/.config/skhd/scripts/open_wezterm.sh
+cmd - 9 : bash ~/.config/skhd/scripts/open_wezterm.sh
 cmd - 0 : bash ~/.config/skhd/scripts/open_google.sh
 
 # Navigation
@@ -32,7 +32,7 @@ shift + cmd - 5 : index=$(yabai -m query --spaces --display | jq '.[4].index') &
 shift + cmd - 6 : index=$(yabai -m query --spaces --display | jq '.[5].index') && yabai -m window --space $index && yabai -m space --focus $index
 shift + cmd - 7 : index=$(yabai -m query --spaces --display | jq '.[6].index') && yabai -m window --space $index && yabai -m space --focus $index
 shift + cmd - 8 : index=$(yabai -m query --spaces --display | jq '.[7].index') && yabai -m window --space $index && yabai -m space --focus $index
-shift + cmd - 9 : index=$(yabai -m query --spaces --display | jq '.[8].index') && yabai -m window --space $index && yabai -m space --focus $index
+# shift + cmd - 9 : index=$(yabai -m query --spaces --display | jq '.[8].index') && yabai -m window --space $index && yabai -m space --focus $index
 
 # focus space
 cmd - 1 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[0].index')
@@ -43,7 +43,7 @@ cmd - 5 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[4].
 cmd - 6 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[5].index')
 cmd - 7 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[6].index')
 cmd - 8 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[7].index')
-cmd - 9 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[8].index')
+# cmd - 9 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[8].index')
 cmd - n : yabai -m space --focus next
 cmd - p : yabai -m space --focus prev
 cmd - m : yabai -m space --focus last
