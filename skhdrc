@@ -15,38 +15,29 @@ shift + cmd - k : yabai -m window --swap north
 shift + cmd - l : yabai -m window --swap east
 
 
-# Move focus container to workspace
-# shift + cmd - m : yabai -m window --space last; yabai -m space --focus last
-# shift + cmd - p : yabai -m window --space prev; yabai -m space --focus prev
-# shift + cmd - n : yabai -m window --space next; yabai -m space --focus next
-shift + cmd - 1 : index=$(yabai -m query --spaces --display | jq '.[0].index') && yabai -m window --space $index && yabai -m space --focus $index
-shift + cmd - 2 : index=$(yabai -m query --spaces --display | jq '.[1].index') && yabai -m window --space $index && yabai -m space --focus $index
-shift + cmd - 3 : index=$(yabai -m query --spaces --display | jq '.[2].index') && yabai -m window --space $index && yabai -m space --focus $index
-shift + cmd - 4 : index=$(yabai -m query --spaces --display | jq '.[3].index') && yabai -m window --space $index && yabai -m space --focus $index
-shift + cmd - 5 : index=$(yabai -m query --spaces --display | jq '.[4].index') && yabai -m window --space $index && yabai -m space --focus $index
-shift + cmd - 6 : index=$(yabai -m query --spaces --display | jq '.[5].index') && yabai -m window --space $index && yabai -m space --focus $index
-shift + cmd - 7 : index=$(yabai -m query --spaces --display | jq '.[6].index') && yabai -m window --space $index && yabai -m space --focus $index
-shift + cmd - 8 : index=$(yabai -m query --spaces --display | jq '.[7].index') && yabai -m window --space $index && yabai -m space --focus $index
+shift + cmd - 1 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 1 && yabai -m window --focus $index || yabai -m space --focus 1
+shift + cmd - 2 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 2 && yabai -m window --focus $index || yabai -m space --focus 2
+shift + cmd - 3 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 3 && yabai -m window --focus $index || yabai -m space --focus 3
+shift + cmd - 4 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 4 && yabai -m window --focus $index || yabai -m space --focus 4
+shift + cmd - 5 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 5 && yabai -m window --focus $index || yabai -m space --focus 5
+shift + cmd - 6 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 6 && yabai -m window --focus $index || yabai -m space --focus 6
+shift + cmd - 7 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 7 && yabai -m window --focus $index || yabai -m space --focus 7
+shift + cmd - 8 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 8 && yabai -m window --focus $index || yabai -m space --focus 8
 
 # focus space
-cmd - 1 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[0].index')
-cmd - 2 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[1].index')
-cmd - 3 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[2].index')
-cmd - 4 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[3].index')
-cmd - 5 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[4].index')
-cmd - 6 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[5].index')
-cmd - 7 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[6].index')
-cmd - 8 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[7].index')
+cmd - 1 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.space == 1 and .level == 0).id') || yabai -m space --focus 1
+cmd - 2 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.space == 2 and .level == 0).id') || yabai -m space --focus 2
+cmd - 3 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.space == 3 and .level == 0).id') || yabai -m space --focus 3
+cmd - 4 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.space == 4 and .level == 0).id') || yabai -m space --focus 4
+cmd - 5 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.space == 5 and .level == 0).id') || yabai -m space --focus 5
+cmd - 6 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.space == 6 and .level == 0).id') || yabai -m space --focus 6
+cmd - 7 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.space == 7 and .level == 0).id') || yabai -m space --focus 7
+cmd - 8 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.space == 8 and .level == 0).id') || yabai -m space --focus 8
 
 # focus monitor
 ctrl + cmd - 1: yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.display == 1 and .level == 0 and ."is-visible" == true).id') || yabai -m display --focus 1 
 ctrl + cmd - 2: yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.display == 2 and .level == 0 and ."is-visible" == true).id') || yabai -m display --focus 2 
 ctrl + cmd - 3: yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.display == 3 and .level == 0 and ."is-visible" == true).id') || yabai -m display --focus 3 
-
-# NOTE:暂时不能支持跨显示器调整window，目前主要是操作逻辑不适用
-# ctrl + shift + cmd - 1: yabai -m window --display 1 && yabai -m display --focus 1
-# ctrl + shift + cmd - 2: yabai -m window --display 2 && yabai -m display --focus 2
-# ctrl + shift + cmd - 3: yabai -m window --display 3 && yabai -m display --focus 3
 
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
 ctrl + cmd - n : yabai -m space --create && \
