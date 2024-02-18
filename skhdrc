@@ -14,16 +14,11 @@ shift + cmd - j : yabai -m window --swap south
 shift + cmd - k : yabai -m window --swap north
 shift + cmd - l : yabai -m window --swap east
 
-# Moving windows - warp
-# shift + alt + ctrl - k : yabai -m window --warp west
-# shift + alt + ctrl - n : yabai -m window --warp south
-# shift + alt + ctrl - e : yabai -m window --warp north
-# shift + alt + ctrl - i : yabai -m window --warp east
 
 # Move focus container to workspace
-shift + cmd - m : yabai -m window --space last; yabai -m space --focus last
-shift + cmd - p : yabai -m window --space prev; yabai -m space --focus prev
-shift + cmd - n : yabai -m window --space next; yabai -m space --focus next
+# shift + cmd - m : yabai -m window --space last; yabai -m space --focus last
+# shift + cmd - p : yabai -m window --space prev; yabai -m space --focus prev
+# shift + cmd - n : yabai -m window --space next; yabai -m space --focus next
 shift + cmd - 1 : index=$(yabai -m query --spaces --display | jq '.[0].index') && yabai -m window --space $index && yabai -m space --focus $index
 shift + cmd - 2 : index=$(yabai -m query --spaces --display | jq '.[1].index') && yabai -m window --space $index && yabai -m space --focus $index
 shift + cmd - 3 : index=$(yabai -m query --spaces --display | jq '.[2].index') && yabai -m window --space $index && yabai -m space --focus $index
@@ -32,7 +27,6 @@ shift + cmd - 5 : index=$(yabai -m query --spaces --display | jq '.[4].index') &
 shift + cmd - 6 : index=$(yabai -m query --spaces --display | jq '.[5].index') && yabai -m window --space $index && yabai -m space --focus $index
 shift + cmd - 7 : index=$(yabai -m query --spaces --display | jq '.[6].index') && yabai -m window --space $index && yabai -m space --focus $index
 shift + cmd - 8 : index=$(yabai -m query --spaces --display | jq '.[7].index') && yabai -m window --space $index && yabai -m space --focus $index
-# shift + cmd - 9 : index=$(yabai -m query --spaces --display | jq '.[8].index') && yabai -m window --space $index && yabai -m space --focus $index
 
 # focus space
 cmd - 1 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[0].index')
@@ -43,19 +37,16 @@ cmd - 5 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[4].
 cmd - 6 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[5].index')
 cmd - 7 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[6].index')
 cmd - 8 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[7].index')
-# cmd - 9 : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[8].index')
-cmd - n : yabai -m space --focus next
-cmd - p : yabai -m space --focus prev
-cmd - m : yabai -m space --focus last
 
 # focus monitor
-ctrl + cmd - 1: yabai -m display --focus 1
-ctrl + cmd - 2: yabai -m display --focus 2
-ctrl + cmd - 3: yabai -m display --focus 3
+ctrl + cmd - 1: yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.display == 1 and .level == 0 and ."is-visible" == true).id') || yabai -m display --focus 1 
+ctrl + cmd - 2: yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.display == 2 and .level == 0 and ."is-visible" == true).id') || yabai -m display --focus 2 
+ctrl + cmd - 3: yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.display == 3 and .level == 0 and ."is-visible" == true).id') || yabai -m display --focus 3 
 
-ctrl + shift + cmd - 1: yabai -m window --display 1 && yabai -m display --focus 1
-ctrl + shift + cmd - 2: yabai -m window --display 2 && yabai -m display --focus 2
-ctrl + shift + cmd - 3: yabai -m window --display 3 && yabai -m display --focus 3
+# NOTE:暂时不能支持跨显示器调整window，目前主要是操作逻辑不适用
+# ctrl + shift + cmd - 1: yabai -m window --display 1 && yabai -m display --focus 1
+# ctrl + shift + cmd - 2: yabai -m window --display 2 && yabai -m display --focus 2
+# ctrl + shift + cmd - 3: yabai -m window --display 3 && yabai -m display --focus 3
 
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
 ctrl + cmd - n : yabai -m space --create && \
@@ -121,3 +112,4 @@ shift + ctrl + cmd - r : \
 # Make window native fullscreen
 cmd - f         : yabai -m window --toggle zoom-fullscreen
 shift + cmd - f : yabai -m window --toggle native-fullscreen
+
