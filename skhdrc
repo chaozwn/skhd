@@ -35,11 +35,6 @@ cmd - 7 : index=$(yabai -m query --windows | jq '.[] | select(.space == 7 and .l
 cmd - 8 : index=$(yabai -m query --windows | jq '.[] | select(.space == 8 and .level == 0).id' | head -n 1) && if [ -n "$index" ]; then yabai -m window --focus $index || yabai -m space --focus 8; else yabai -m space --focus 8; fi
 
 
-# focus monitor
-ctrl + cmd - 1: yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.display == 1 and .level == 0 and ."is-visible" == true).id')
-ctrl + cmd - 2: yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.display == 2 and .level == 0 and ."is-visible" == true).id')
-ctrl + cmd - 3: yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.display == 3 and .level == 0 and ."is-visible" == true).id')
-
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
 ctrl + cmd - n : yabai -m space --create && \
                   index=$(yabai -m query --spaces --display | jq '.[-1].index') && \
