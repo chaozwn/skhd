@@ -36,9 +36,9 @@ cmd - 8 : index=$(yabai -m query --windows | jq '.[] | select(.space == 8 and .l
 
 
 # focus monitor
-ctrl + cmd - 1: yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.display == 1 and .level == 0 and ."is-visible" == true).id') || yabai -m display --focus 1 
-ctrl + cmd - 2: yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.display == 2 and .level == 0 and ."is-visible" == true).id') || yabai -m display --focus 2 
-ctrl + cmd - 3: yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.display == 3 and .level == 0 and ."is-visible" == true).id') || yabai -m display --focus 3 
+ctrl + cmd - 1: yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.display == 1 and .level == 0 and ."is-visible" == true).id')
+ctrl + cmd - 2: yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.display == 2 and .level == 0 and ."is-visible" == true).id')
+ctrl + cmd - 3: yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.display == 3 and .level == 0 and ."is-visible" == true).id')
 
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
 ctrl + cmd - n : yabai -m space --create && \
@@ -101,5 +101,5 @@ shift + ctrl + cmd - r : \
 
 # Make window native fullscreen
 ctrl - f         : yabai -m window --toggle zoom-fullscreen
-shift + ctrl - f : yabai -m window --toggle native-fullscreen
+shift + cmd - f : yabai -m window --toggle native-fullscreen
 
