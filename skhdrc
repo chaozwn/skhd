@@ -95,6 +95,6 @@ shift + ctrl + cmd - r : \
     launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
 # Make window native fullscreen
-ctrl - f         : yabai -m window --toggle zoom-fullscreen
-shift + cmd - f : yabai -m window --toggle native-fullscreen
+cmd - o         : yabai -m window --toggle zoom-fullscreen
+shift + cmd - o : yabai -m window --toggle native-fullscreen
 
