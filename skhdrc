@@ -14,44 +14,38 @@ shift + cmd - j : yabai -m window --swap south
 shift + cmd - k : yabai -m window --swap north
 shift + cmd - l : yabai -m window --swap east
 
-
-shift + cmd - 1 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 1 && yabai -m window --focus $index || yabai -m space --focus 1
-shift + cmd - 2 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 2 && yabai -m window --focus $index || yabai -m space --focus 2
-shift + cmd - 3 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 3 && yabai -m window --focus $index || yabai -m space --focus 3
-shift + cmd - 4 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 4 && yabai -m window --focus $index || yabai -m space --focus 4
-shift + cmd - 5 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 5 && yabai -m window --focus $index || yabai -m space --focus 5
-shift + cmd - 6 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 6 && yabai -m window --focus $index || yabai -m space --focus 6
-shift + cmd - 7 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 7 && yabai -m window --focus $index || yabai -m space --focus 7
-shift + cmd - 8 : index=$(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 8 && yabai -m window --focus $index || yabai -m space --focus 8
+shift + cmd - 1 : set index $(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 1 && yabai -m window --focus $index || yabai -m space --focus 1
+shift + cmd - 2 : set index $(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 2 && yabai -m window --focus $index || yabai -m space --focus 2
+shift + cmd - 3 : set index $(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 3 && yabai -m window --focus $index || yabai -m space --focus 3
+shift + cmd - 4 : set index $(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 4 && yabai -m window --focus $index || yabai -m space --focus 4
+shift + cmd - 5 : set index $(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 5 && yabai -m window --focus $index || yabai -m space --focus 5
+shift + cmd - 6 : set index $(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 6 && yabai -m window --focus $index || yabai -m space --focus 6
+shift + cmd - 7 : set index $(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 7 && yabai -m window --focus $index || yabai -m space --focus 7
+shift + cmd - 8 : set index $(yabai -m query --windows | jq '.[] | select(."has-focus" == true).id') && yabai -m window --space 8 && yabai -m window --focus $index || yabai -m space --focus 8
 
 # focus space
-cmd - 1 : index=$(yabai -m query --windows | jq '.[] | select(.space == 1 and .level == 0).id' | head -n 1) && if [ -n "$index" ]; then yabai -m window --focus $index || yabai -m space --focus 1; else yabai -m space --focus 1; fi
-cmd - 2 : index=$(yabai -m query --windows | jq '.[] | select(.space == 2 and .level == 0).id' | head -n 1) && if [ -n "$index" ]; then yabai -m window --focus $index || yabai -m space --focus 2; else yabai -m space --focus 2; fi
-cmd - 3 : index=$(yabai -m query --windows | jq '.[] | select(.space == 3 and .level == 0).id' | head -n 1) && if [ -n "$index" ]; then yabai -m window --focus $index || yabai -m space --focus 3; else yabai -m space --focus 3; fi
-cmd - 4 : index=$(yabai -m query --windows | jq '.[] | select(.space == 4 and .level == 0).id' | head -n 1) && if [ -n "$index" ]; then yabai -m window --focus $index || yabai -m space --focus 4; else yabai -m space --focus 4; fi
-cmd - 5 : index=$(yabai -m query --windows | jq '.[] | select(.space == 5 and .level == 0).id' | head -n 1) && if [ -n "$index" ]; then yabai -m window --focus $index || yabai -m space --focus 5; else yabai -m space --focus 5; fi
-cmd - 6 : index=$(yabai -m query --windows | jq '.[] | select(.space == 6 and .level == 0).id' | head -n 1) && if [ -n "$index" ]; then yabai -m window --focus $index || yabai -m space --focus 6; else yabai -m space --focus 6; fi
-cmd - 7 : index=$(yabai -m query --windows | jq '.[] | select(.space == 7 and .level == 0).id' | head -n 1) && if [ -n "$index" ]; then yabai -m window --focus $index || yabai -m space --focus 7; else yabai -m space --focus 7; fi
-cmd - 8 : index=$(yabai -m query --windows | jq '.[] | select(.space == 8 and .level == 0).id' | head -n 1) && if [ -n "$index" ]; then yabai -m window --focus $index || yabai -m space --focus 8; else yabai -m space --focus 8; fi
-
+cmd - 1 : set index (yabai -m query --windows | jq '.[] | select(.space == 1 and .level == 0).id' | head -n 1); test -n "$index" && yabai -m window --focus $index || yabai -m space --focus 1
+cmd - 2 : set index (yabai -m query --windows | jq '.[] | select(.space == 2 and .level == 0).id' | head -n 1); test -n "$index" && yabai -m window --focus $index || yabai -m space --focus 2
+cmd - 3 : set index (yabai -m query --windows | jq '.[] | select(.space == 3 and .level == 0).id' | head -n 1); test -n "$index" && yabai -m window --focus $index || yabai -m space --focus 3
+cmd - 4 : set index (yabai -m query --windows | jq '.[] | select(.space == 4 and .level == 0).id' | head -n 1); test -n "$index" && yabai -m window --focus $index || yabai -m space --focus 4
+cmd - 5 : set index (yabai -m query --windows | jq '.[] | select(.space == 5 and .level == 0).id' | head -n 1); test -n "$index" && yabai -m window --focus $index || yabai -m space --focus 5
+cmd - 6 : set index (yabai -m query --windows | jq '.[] | select(.space == 6 and .level == 0).id' | head -n 1); test -n "$index" && yabai -m window --focus $index || yabai -m space --focus 6
+cmd - 7 : set index (yabai -m query --windows | jq '.[] | select(.space == 7 and .level == 0).id' | head -n 1); test -n "$index" && yabai -m window --focus $index || yabai -m space --focus 7
+cmd - 8 : set index (yabai -m query --windows | jq '.[] | select(.space == 8 and .level == 0).id' | head -n 1); test -n "$index" && yabai -m window --focus $index || yabai -m space --focus 8
 
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-ctrl + cmd - n : yabai -m space --create && \
-                  index=$(yabai -m query --spaces --display | jq '.[-1].index') && \
-                  yabai -m window --space $index && \
-                  yabai -m space --focus $index
+ctrl + cmd - n : yabai -m space --create; \
+                    set index (yabai -m query --spaces --display | jq '.[-1].index'); \
+                    yabai -m window --space $index; \
+                    yabai -m space --focus $index
+
 
 # create desktop and follow focus - uses jq for parsing json (brew install jq)
-ctrl + cmd - c : yabai -m space --create && \
-                index=$(yabai -m query --spaces --display | jq '.[-1].index') && \
-                yabai -m space --focus $index
+ctrl + cmd - c : yabai -m space --create; set index (yabai -m query --spaces --display | jq '.[-1].index'); yabai -m space --focus $index
+
 
 # destroy desktop
-ctrl + cmd - d : \
-    index="$(yabai -m query --spaces | jq '.[] | select(."has-focus").index')" && \
-    if [ $index -gt 1 ]; then newindex=$(expr $index - 1); else newindex=$(expr $index + 1); fi && \
-    yabai -m space --destroy && \
-    yabai -m space --focus "${newindex}"
+ctrl + cmd - d : set index (yabai -m query --spaces | jq '.[] | select(."has-focus").index'); if test $index -gt 1; set newindex (math "$index - 1"); else; set newindex (math "$index + 1"); end; yabai -m space --destroy; yabai -m space --focus $newindex
 
 # Resize windows
 ctrl + cmd - left : yabai -m window --resize left:-50:0; \
@@ -87,12 +81,6 @@ shift + ctrl + cmd - l : yabai -m window --insert east
 shift + cmd - space : \
     yabai -m window --toggle float; \
     yabai -m window --toggle border
-
-# Restart Yabai
-shift + ctrl + cmd - r : \
-    /usr/bin/env osascript <<< \
-        'display notification "Restarting yabai" with title "yabai"'; \
-    launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
 # Make window native fullscreen
 cmd - o         : yabai -m window --toggle zoom-fullscreen
