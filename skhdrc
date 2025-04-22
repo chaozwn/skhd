@@ -1,5 +1,5 @@
 # opens iTerm2
-cmd - 9 : bash ~/.config/skhd/scripts/open_wezterm.sh
+cmd - 9 : bash ~/.config/skhd/scripts/open_kitty.sh.sh
 cmd - 0 : bash ~/.config/skhd/scripts/open_google.sh
 
 # Navigation
